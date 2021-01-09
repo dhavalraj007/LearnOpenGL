@@ -1,1 +1,7 @@
 Learned about :
+Textures
+Tex coords
+Sampling of texture
+Texture Wrapping
+Texture Filtering : defines stretegy for big objs and small res images (stretegy for scaling and shrinking : GL_NEAREST,GL_LINEAR )
+Mipmaps : solves problem of small objs(respect to camera pos.) and high res images 
