@@ -19,8 +19,42 @@ Tutorials from LearnOpengl.com
 * GLFW allows us to create an OpenGL context, define window parameters, and handle user input.
 * GLAD defines all the opengl functions definitions and also makes OS-specific calls to retrieve the address of those fucntions and assigns them to the function pointer when you call gladGLLoader func.
   * We pass GLAD the function to load the address of the OpenGL function pointers which is OS-specific. GLFW gives us glfwGetProcAddress that defines the correct function based on which OS we're compiling for.
+* to get started with OpenGL do the following:
+  1. set up OpenGL context and window (set up glfw) and make context current
+   ``` C++
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);  // version 3.3
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // core profile
+    
+    GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL); //window and context
+    glfwMakeContextCurrent(window);  //make context current on the window
+   ```
+  2. get those funciton pointers from the drivers (set up glad)
+    ``` C++
+    gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)
+    ```
+  3. add the render loop 
+    ``` C++
+     while (!glfwWindowShouldClose(window))
+      {
+        // input
+        processInput(window);
 
+        // render
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
 
+        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+      }
+
+    ```
+  4. Free up all the glfw resources
+    ``` C++
+    glfwTerminate();
+    ```
 
 
 
