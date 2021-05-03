@@ -1,6 +1,4 @@
-# LearnOpenGL
 Tutorials from LearnOpengl.com
-
 # Notes
 ## Getting Started
 
