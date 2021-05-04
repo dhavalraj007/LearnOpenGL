@@ -62,6 +62,7 @@ Tutorials Notes from [LearnOpengl.com](https://learnopengl.com/)
 * Shaders are written in the OpenGL Shading Language (**GLSL**).
 
 * Only Vertex-shader , geometry-shader and fragment shader can be user defined.
+* In modern OpenGL we are required to define at least a vertex and fragment shader of our own (there are no default vertex/fragment shaders on the GPU)
 * **Vertex** is a collection of data per 3D coordinate. That vertex's data is represented using vertex attributes that can contain any data we'd like(eg. 3D coords and Color).
 * OpenGL requires you to hint what kind of render types you want to form with the Vertex data.Those hints are called **primitives**. Some of these hints are GL_POINTS, GL_TRIANGLES and GL_LINE_STRIP.
 * A fragment in OpenGL is all the data required for OpenGL to render a single pixel.
