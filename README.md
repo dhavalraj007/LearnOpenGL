@@ -19,7 +19,7 @@ Tutorials from LearnOpengl.com
   * We pass GLAD the function to load the address of the OpenGL function pointers which is OS-specific. GLFW gives us glfwGetProcAddress that defines the correct function based on which OS we're compiling for.
 * to get started with OpenGL do the following:
   1. set up OpenGL context and window (set up glfw) and make context current
-   ``` C++
+   ``` cpp
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);  // version 3.3
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -29,11 +29,11 @@ Tutorials from LearnOpengl.com
     glfwMakeContextCurrent(window);  //make context current on the window
    ```
   2. get those funciton pointers from the drivers (set up glad)
-    ``` C++
+    ``` cpp
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)
     ```
   3. add the render loop 
-    ``` C++
+    ``` cpp
      while (!glfwWindowShouldClose(window))
       {
         // input
@@ -50,7 +50,7 @@ Tutorials from LearnOpengl.com
 
     ```
   4. Free up all the glfw resources
-    ``` C++
+    ``` cpp
     glfwTerminate();
     ```
 
