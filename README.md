@@ -1,4 +1,4 @@
-Tutorials from LearnOpengl.com
+Tutorials Notes from [LearnOpengl.com](https://learnopengl.com/)
 # Notes
 ## Getting Started
 
@@ -53,7 +53,27 @@ Tutorials from LearnOpengl.com
     ``` cpp
     glfwTerminate();
     ```
+### Hello Triangle
+#### [Graphics pipeline](https://learnopengl.com/img/getting-started/pipeline.png) brief
+* **The graphics pipeline** can be divided into two large parts: the first transforms your 3D coordinates into 2D coordinates and the second part transforms the 2D coordinates into actual colored pixels.
+* So the **graphics pipeline** of OpenGL manages the process of transforming 3D coordinates -> 2D colored pixels.
+* The graphics pipeline can be divided into several steps where each step requires the output of the previous step as its input. All of these steps are highly specialized (they have one specific function) and can easily be executed in parallel.
+* The processing cores run small programs on the GPU for each step of the pipeline. These small programs are called **shaders**.
+* Shaders are written in the OpenGL Shading Language (**GLSL**).
 
+* Only Vertex-shader , geometry-shader and fragment shader can be user defined.
+* **Vertex** is a collection of data per 3D coordinate. That vertex's data is represented using vertex attributes that can contain any data we'd like(eg. 3D coords and Color).
+* OpenGL requires you to hint what kind of render types you want to form with the Vertex data.Those hints are called **primitives**. Some of these hints are GL_POINTS, GL_TRIANGLES and GL_LINE_STRIP.
+* A fragment in OpenGL is all the data required for OpenGL to render a single pixel.
+
+| stage | brief |
+|:----- | :----- |
+| Vertex-shader | takes a single vertex as a input. The vertex shader transforms 3D coords into different 3D coords (more on that later) and allows us to do some basic processing on the vertex attribs. | 
+| Shape-assembly | takes as input all the vertices (or vertex if GL_POINTS is chosen) from the vertex shader that form a primitive and assembles all the point(s) in the primitive shape given. |
+| Geometry-shader | The geometry shader takes as input a collection of vertices that form a primitive and has the ability to generate other shapes by emitting new vertices to form new (or other) primitive(s). |
+| Rasterization | it maps the resulting primitive(s) to the corresponding pixels on the final screen, resulting in fragments for the fragment shader to use. Before the fragment shaders run, clipping is performed. Clipping discards all fragments that are outside your view, increasing performance. |
+| Fragment-shader | The main purpose of the fragment shader is to calculate the final color of a pixel and this is usually the stage where all the advanced OpenGL effects occur. Usually the fragment shader contains data about the 3D scene that it can use to calculate the final pixel color (like lights, shadows, color of the light and so on). |
+| alpha Tests and Blending | This stage checks the corresponding depth (and stencil) value of the fragment and uses those to check if the resulting fragment is in front or behind other objects and should be discarded accordingly. The stage also checks for alpha values (the opacity of an object) and blends the objects accordingly. |
 
 
 
