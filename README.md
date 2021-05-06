@@ -75,9 +75,11 @@ Tutorials Notes from [LearnOpengl.com](https://learnopengl.com/)
 | Rasterization | it maps the resulting primitive(s) to the corresponding pixels on the final screen, resulting in fragments for the fragment shader to use. Before the fragment shaders run, clipping is performed. Clipping discards all fragments that are outside your view, increasing performance. |
 | Fragment-shader | The main purpose of the fragment shader is to calculate the final color of a pixel and this is usually the stage where all the advanced OpenGL effects occur. Usually the fragment shader contains data about the 3D scene that it can use to calculate the final pixel color (like lights, shadows, color of the light and so on). |
 | alpha Tests and Blending | This stage checks the corresponding depth (and stencil) value of the fragment and uses those to check if the resulting fragment is in front or behind other objects and should be discarded accordingly. The stage also checks for alpha values (the opacity of an object) and blends the objects accordingly. |
-
-
-
+#### vertex input
+* Once your vertex coordinates have been processed in the vertex shader, they should be in *normalized device coordinates(NDC)* which is a small space where the x, y and z values vary from -1.0 to 1.0. Any coordinates that fall outside this range will be discarded/clipped and won't be visible on your screen.
+* *NDC* coordinates will then be transformed to *screen-space coordinates* via the viewport transform using the data you provided with `glViewport`. 
+* *Vertex Buffer Objects (VBO)* can store a large number of vertices in the GPU's memory. The advantage of using those buffer objects is that we can send large batches of data all at once to the graphics card, and keep it there if there's enough memory left, without having to send data one vertex at a time. Sending data to the graphics card from the CPU is relatively slow, so wherever we can we try to send as much data as possible at once. Once the data is in the graphics card's memory the vertex shader has almost instant access to the vertices making it extremely fast.
+* `glGenBuffers` returns the unsused object names.
 *Old notes*
 * Textures
 * Tex coords
