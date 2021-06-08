@@ -1,5 +1,5 @@
 Tutorials Notes from [LearnOpengl.com](https://learnopengl.com/)
-# Notes
+# Notes (stopped updating)
 ## Getting Started
 
 ### OpenGL
